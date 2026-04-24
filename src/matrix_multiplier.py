@@ -1,5 +1,5 @@
 import numpy as np
-import cupy as cp
+# import cupy as cp
 from numba import njit, prange
 
 
@@ -42,13 +42,13 @@ class MatrixMultiplier:
     def multiply_numba(self):
         return _numba_multiplier(self.A, self.B)
 
-    def multiply_gpu(self):
-        with cp.cuda.Device(0):
-            A_gpu = cp.asarray(self.A)
-            B_gpu = cp.asarray(self.B)
+    # def multiply_gpu(self):
+    #     with cp.cuda.Device(0):
+    #         A_gpu = cp.asarray(self.A)
+    #         B_gpu = cp.asarray(self.B)
 
-            C_gpu = cp.dot(A_gpu, B_gpu)
+    #         C_gpu = cp.dot(A_gpu, B_gpu)
 
-            cp.cuda.Stream.null.synchronize()
+    #         cp.cuda.Stream.null.synchronize()
 
-            return cp.asnumpy(C_gpu)
+    #         return cp.asnumpy(C_gpu)
